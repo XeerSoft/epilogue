@@ -51,7 +51,7 @@
     "mocha": "^4.0.1",
     "request": "^2.83.0",
     "restify": "^4.3.1",
-    "sequelize": "^3.30.4",
+    "sequelize": "^4.15.0",
     "sqlite3": "^3.1.13"
   }
 }
