@@ -563,7 +563,7 @@ describe('Milestones', function() {
         return context.continue;
       });
 
-      return test.models.User.bulkCreate([
+      test.models.User.bulkCreate([
         { username: 'tom', email: 'tom@gmail.com' },
         { username: 'dick', email: 'dick@gmail.com' },
         { username: 'harry', email: 'harry@gmail.com' },

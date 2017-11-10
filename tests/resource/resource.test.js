@@ -95,14 +95,10 @@ describe('Resource(basic)', function() {
       done();
     });
 
-    it('should throw an exception if created with an invalid model', function(done) {
-      try {
+    it('should throw an exception if created with an invalid options', function() {
+      expect(() => {
         var resource = new rest.Resource(); // jshint ignore:line
-      } catch (exception) {
-        expect(exception).to.eql(new Error('resource needs a model'));
-        done();
-      }
-
+      }).to.throws('resource need options');
     });
 
     it('should auto generate endpoints if none were provided', function() {
