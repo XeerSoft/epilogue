@@ -7,7 +7,7 @@ var Promise = require('bluebird'),
     rest = require('../../lib'),
     test = require('../support');
 
-describe('issue 107', function() {
+describe('dchester/epilogue issue 107', function() {
   before(function() {
     test.models.Channel = test.db.define('Channel', { name: test.Sequelize.STRING }, { timestamps: false, });
     test.models.AdSlot = test.db.define('AdSlot', { name: test.Sequelize.STRING }, { timestamps: false, });

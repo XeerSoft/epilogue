@@ -7,7 +7,7 @@ var Promise = require('bluebird'),
   rest = require('../../lib'),
   test = require('../support');
 
-describe('issue 161 - associated excludes', function () {
+describe('dchester/epilogue issue 161 - associated excludes', function () {
   before(function () {
     test.models.AncientGod = test.db.define('AncientGod', {
       name: test.Sequelize.STRING,
