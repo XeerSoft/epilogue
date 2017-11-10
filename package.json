@@ -7,6 +7,10 @@
     {
       "name": "Matt Broadstone",
       "email": "mbroadst@gmail.com"
+    },
+    {
+      "name": "Satana Charuwichitratana (Mick)",
+      "email": "micksatana@live.com"
     }
   ],
   "main": "lib/",
@@ -18,10 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dchester/epilogue.git"
+    "url": "https://github.com/xeersoft/epilogue.git"
   },
   "bugs": {
-    "url": "https://github.com/dchester/epilogue/issues"
+    "url": "https://github.com/xeersoft/epilogue/issues"
   },
   "license": "MIT",
   "keywords": [
