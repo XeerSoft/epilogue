@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/XeerSoft/epilogue.svg?branch=master)](https://travis-ci.org/XeerSoft/epilogue) [![Dependency Status](https://david-dm.org/XeerSoft/epilogue.svg)](https://david-dm.org/XeerSoft/epilogue)
+[![Build Status](https://travis-ci.org/XeerSoft/epilogue.svg?branch=master)](https://travis-ci.org/XeerSoft/epilogue)
+[![codecov](https://codecov.io/gh/XeerSoft/epilogue/branch/master/graph/badge.svg)](https://codecov.io/gh/XeerSoft/epilogue)
+[![Dependency Status](https://david-dm.org/XeerSoft/epilogue.svg)](https://david-dm.org/XeerSoft/epilogue)
 
 # Epilogue
 
