@@ -36,6 +36,8 @@ test.tests = {
   },
 
   update: function(options) {
+    options.enableTest();
+
     request.post({
       url: test.baseUrl + '/users',
       json: { username: 'jamez', email: 'jamez@gmail.com' }
@@ -45,7 +47,6 @@ test.tests = {
 
       var path = response.headers.location;
 
-      options.enableTest();
       request.put({
         url: test.baseUrl + path,
         json: { email: 'emma@fmail.co.uk' }
@@ -60,6 +61,8 @@ test.tests = {
   },
 
   destroy: function(options) {
+    options.enableTest();
+
     request.post({
       url: test.baseUrl + '/users',
       json: { username: 'chicken', email: 'chicken@gmail.com' }
@@ -68,7 +71,6 @@ test.tests = {
       expect(response.headers.location).is.not.empty;
       var path = response.headers.location;
 
-      options.enableTest();
       request.del({
         url: test.baseUrl + path
       }, function(err, response, body) {
@@ -99,11 +101,14 @@ describe('Resource(hooks)', function() {
 
     Object.keys(test.hooks).forEach(function(verb) {
       Object.keys(test.hooks[verb]).forEach(function(hook) {
-        test.models.User.hook(hook, function(instance, options, callback) {
-          if (test.hooks[verb][hook])
+        test.models.User.hook(hook, function(verb, hook, instance, options, callback) {
+          if (test.hooks[verb][hook]) {
             throw new Error(verb + "#" + hook);
-          callback();
-        });
+          }
+          if (callback !== undefined) {
+            callback();
+          }
+        }.call(null, verb, hook));
       });
     });
 
@@ -133,13 +138,13 @@ describe('Resource(hooks)', function() {
           var expectedError = verb + '#' + hook;
           test.tests[verb]({
             expectedError: expectedError,
-            enableTest: function() {
+            enableTest: function(verb, hook) {
               test.hooks[verb][hook] = true;
-            },
-            afterTest: function() {
+            }.call(null, verb, hook),
+            afterTest: function(verb, hook) {
               test.hooks[verb][hook] = false;
               done();
-            }
+            }.call(null, verb, hook)
           });
         });
       });

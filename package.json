@@ -38,6 +38,8 @@
     "api"
   ],
   "dependencies": {
+    "@types/express": "^4.0.39",
+    "@types/sequelize": "^4.0.79",
     "bluebird": "^3.5.1",
     "inflection": "^1.12.0",
     "lodash": "^4.17.4"
