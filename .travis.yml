@@ -7,3 +7,5 @@ sudo: false
 env:
   -
   - USE_RESTIFY=1
+after_success:
+  - codecov -t ba4c8124-932a-4045-90fa-e18b1f1cfeec
