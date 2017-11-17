@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dchester/epilogue.svg?branch=master)](https://travis-ci.org/dchester/epilogue) [![Dependency Status](https://david-dm.org/dchester/epilogue.svg)](https://david-dm.org/dchester/epilogue)
+[![Build Status](https://travis-ci.org/XeerSoft/epilogue.svg?branch=master)](https://travis-ci.org/XeerSoft/epilogue) [![Dependency Status](https://david-dm.org/XeerSoft/epilogue.svg)](https://david-dm.org/XeerSoft/epilogue)
 
 # Epilogue
 
