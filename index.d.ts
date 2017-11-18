@@ -1,6 +1,5 @@
 declare module 'epilogue' {
   import {
-    Model,
     Sequelize,
     AssociationOptions,
     DataTypeAbstract,
@@ -32,25 +31,25 @@ declare module 'epilogue' {
     DataTypeDouble,
     DataTypeGeometry
   } from 'sequelize';
-  import {Express, Request, Response} from 'express';
+  import { Express, Request, Response } from 'express';
 
   export class Endpoint {
     constructor(endpoint: string);
     string: string;
-    attributes: Array<string>;
+    attributes: string[];
   }
 
   export class Resource {
     constructor(options: ResourceOptions);
     app: Express;
     sequelize: Sequelize;
-    model: Model;
-    include: Array<{ model: Model } | Model | string>;
+    model: any;
+    include: Array<{ model: any } | any | string>;
     associationOptions: ResourceAssociationOptions;
-    readOnlyAttributes: Array<string>;
-    excludeAttributes: Array<string>;
-    attributes: Array<string>;
-    actions: Array<string>;
+    readOnlyAttributes: string[];
+    excludeAttributes: string[];
+    attributes: string[];
+    actions: string[];
     endpoints: {
       singular: string;
       plural: string;
@@ -73,17 +72,11 @@ declare module 'epilogue' {
   }
 
   export interface Errors {
-    NotFoundError: EpilogueError,
-    BadRequestError: EpilogueError,
-    EpilogueError: EpilogueError,
-    ForbiddenError: EpilogueError,
-    RequestCompleted: EpilogueError
-  }
-
-
-
-  export class HasManyResource {
-    constructor(Resource, resource: Resource, HasMany);
+    NotFoundError: EpilogueError;
+    BadRequestError: EpilogueError;
+    EpilogueError: EpilogueError;
+    ForbiddenError: EpilogueError;
+    RequestCompleted: EpilogueError;
   }
 
   export interface ResourceAssociationOptions extends AssociationOptions {
@@ -93,7 +86,7 @@ declare module 'epilogue' {
   export interface ResourceSearchOption {
     param: string;
     operator: string;
-    attributes: Array<string>;
+    attributes: string[];
   }
 
   export interface ResourceSortOption {
@@ -110,10 +103,10 @@ declare module 'epilogue' {
 
   export interface BaseContollerOptions {
     endpoint: string;
-    model: Model;
+    model: any;
     app: Express;
     resource: Resource;
-    include: Array<Model | string>;
+    include: Array<any | string>;
   }
 
   export interface Context {
@@ -124,13 +117,13 @@ declare module 'epilogue' {
     continue: () => void;
     skip: () => void;
     stop: () => void;
-    error: (status: number | EpilogueError, message?: string, errorList?: Array<string>, cause?: Error) => void;
+    error: (status: number | EpilogueError, message?: string, errorList?: string[], cause?: Error) => void;
   }
 
   export class BaseController {
     constructor(options: BaseContollerOptions);
     endpoint: Endpoint;
-    model: Model;
+    model: any;
   }
 
   export class CreateController extends BaseController {
@@ -162,37 +155,28 @@ declare module 'epilogue' {
   }
 
   export interface ResourceOptions {
-    model: Model;
-    endpoints: Array<string>;
-    actions: Array<string>;
-    include: Array<Model | string>;
-    pagination: boolean;
-    search: ResourceSearchOption;
-    sort: ResourceSortOption;
-    reloadInstances: boolean;
-    associations: AssociationOptions;
-    excludeAttributes: Array<string>;
-    readOnlyAttributes: Array<string>;
-    updateMethod: string;
+    model: any;
+    endpoints: string[];
+    actions?: string[];
+    include?: Array<any | string>;
+    pagination?: boolean;
+    search?: ResourceSearchOption;
+    sort?: ResourceSortOption;
+    reloadInstances?: boolean;
+    associations?: AssociationOptions;
+    excludeAttributes?: string[];
+    readOnlyAttributes?: string[];
+    updateMethod?: string;
   }
 
   export class EpilogueError extends Error {
     name: string;
     message: string;
-    errors: Array<string>;
+    errors: string[];
     status: EpilogueError | number;
     cause: Error;
   }
 
-  export interface Epilogue {
-    initialize: (options: InitializeOptions) => void;
-    resource: (options: ResourceOptions) => Resource;
-    Resource: Resource;
-    Endpoint: Endpoint;
-    Controllers: Controllers;
-    Errors: Errors;
-  }
-
-  function initialize(options: InitializeOptions): void;
+  function initialize(options: InitializeOptions): undefined;
   function resource(options: ResourceOptions): Resource;
 }
