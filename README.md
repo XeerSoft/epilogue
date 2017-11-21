@@ -62,6 +62,7 @@ database
   });
 ```
 
+
 ### Controllers and endpoints
 
 On the server we now have the following controllers and endpoints:
@@ -511,9 +512,33 @@ The milestone documentation provides many other hooks for finer-grained operatio
 i.e. permitting all users to `list` but only some users to `delete` can be implemented
 by using the same approach described above, with different milestones.
 
+
+### Differences in this fork
+
+It's been awhile since last upgrade of node_modules in the main repo. This fork offers some extra benefits.
+
+#### Upgrade node modules
+
+In this fork, we'll keep node modules up to date.
+
+#### Support TypeScript
+
+The main contributor in this fork is the author of @types/epilogue which adding TypeScript support for main repository
+`dchester/epilogue` 
+
+To import epilogue into TypeScript, prepend the following line.
+```
+import * as epilogue from 'epilogue';
+```
+
+#### Stop support for future versions of Restify
+
+Our resource is limited, so we decide not to support Restify in future versions later than 4.3.1. 
+
 ## License
 
 Copyright (C) 2012-2015 David Chester
+
 Copyright (C) 2014-2015 Matt Broadstone
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
