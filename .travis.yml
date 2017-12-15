@@ -1,11 +1,6 @@
 language: node_js
 node_js:
-  - "6"
   - "8"
-
 sudo: false
-env:
-  -
-  - USE_RESTIFY=1
 after_success:
   - npm run codecov
