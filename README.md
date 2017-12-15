@@ -282,20 +282,26 @@ This would restrict substring searches to the ```username``` attribute of the Us
 $ curl http://localhost/users?searchOnlyUsernames=james
 ```
 
-By default, the substring search is performed using a ```{field} LIKE '%{query}%'``` pattern. However, this behavior can be customized by specifying a search operator. Valid operators include: `$like` (default), `$ilike`/`$iLike`, `$notLike`, `$notILike`, `$ne`, `$eq`, `$not`, `$gte`, `$gt`, `$lte`, `$lt`. All "\*like" operators can only be used against Sequelize.STRING or Sequelize.TEXT fields. For instance:
+By default, the substring search is performed using a ```{field} LIKE '%{query}%'``` pattern. 
+However, this behavior can be customized by specifying a search operator. 
+Valid operators see [Sequelize.Op](http://docs.sequelizejs.com/manual/tutorial/querying.html#operators-aliases)
+
+For instance:
 
 ```javascript
 var userResource = epilogue.resource({
     model: User,
     endpoints: ['/users', '/users/:id'],
     search: {
-      operator: '$gt',
+      operator: Sequelize.Op.gt,
       attributes: [ 'age' ]
     }
 });
 ```
 
-You can change the ```{field} LIKE '%{query}%'``` pattern to ```{field} LIKE '{query}%'``` (search from start) or ```{field} LIKE '%{query}%'``` (search from the end) by spezifying a search direction. Valid directions are: `both` (default), `start`, `end`.
+You can change the ```{field} LIKE '%{query}%'``` pattern to ```{field} LIKE '{query}%'``` (search from start) 
+or ```{field} LIKE '%{query}%'``` (search from the end) by specifying a search direction. 
+Valid directions are: `both` (default), `start`, `end`.
 
 ```javascript
 var userResource = epilogue.resource({
@@ -307,14 +313,15 @@ var userResource = epilogue.resource({
 });
 ```
 
-When querying against a Sequelize.BOOLEAN field, you'll need to use the `$eq` operator. You can also add multiple search parameters by passing the search key an array of objects:
+When querying against a Sequelize.BOOLEAN field, you'll need to use the `Sequelize.Op.eq` operator. 
+You can also add multiple search parameters by passing the search key an array of objects:
 
 ```javascript
 var userResource = epilogue.resource({
     model: User,
     endpoints: ['/users', '/users/:id'],
     search: [
-      {operator: '$eq', param: 'emailVerified', attributes: [ 'email_verified' ]},
+      {operator: Sequelize.Op.eq, param: 'emailVerified', attributes: [ 'email_verified' ]},
       {param: 'searchOnlyUsernames', attributes: [ 'username' ]}
     ] 
 });
