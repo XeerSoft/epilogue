@@ -241,6 +241,29 @@ describe('Resource(search)', function() {
       expectedResults: [
         { name: 'wake up', finished: true, priority: 1 }
       ]
+    },
+    {
+      name: 'search from start',
+      config: {
+        search: {
+          direction: 'ltr'
+        }
+      },
+      query: 'ar',
+      expectedResults: [
+        { username: 'arthur', email: 'arthur@gmail.com' },
+        { username: 'arthur', email: 'aaaaarthur@gmail.com' }
+      ]
+    },
+    {
+      name: 'search from end',
+      config: {
+        search: {
+          direction: 'rtl'
+        }
+      },
+      query: 'am',
+      expectedResults: [{ username: 'william', email: 'william@gmail.com' }]
     }
   ].forEach(function(testCase) {
     it('should ' + testCase.name, function(done) {

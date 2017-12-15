@@ -295,6 +295,18 @@ var userResource = epilogue.resource({
 });
 ```
 
+You can change the ```{field} LIKE '%{query}%'``` pattern to ```{field} LIKE '{query}%'``` (search from start) or ```{field} LIKE '%{query}%'``` (search from the end) by spezifying a search direction. Valid directions are: `both` (default), `start`, `end`.
+
+```javascript
+var userResource = epilogue.resource({
+    model: User,
+    endpoints: ['/users', '/users/:id'],
+    search: {
+      direction: 'start'
+    }
+});
+```
+
 When querying against a Sequelize.BOOLEAN field, you'll need to use the `$eq` operator. You can also add multiple search parameters by passing the search key an array of objects:
 
 ```javascript

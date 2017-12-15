@@ -1,5 +1,5 @@
 {
-  "name": "epilogue",
+  "name": "@xeersoft/epilogue",
   "description": "Create REST resources and controllers with Sequelize and Express or Restify",
   "version": "0.8.1",
   "author": "David Chester <dchester@shutterstock.com>",
