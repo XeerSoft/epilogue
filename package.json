@@ -19,7 +19,8 @@
     "mocha": "mocha --check-leaks -R spec -u exports tests/*.test.js tests/**/*.test.js --exit",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- tests/*.test.js tests/**/*.test.js --exit",
     "codecov": "codecov -t ba4c8124-932a-4045-90fa-e18b1f1cfeec",
-    "test": "npm run-script jshint && npm run-script mocha"
+    "test": "npm run-script jshint && npm run-script mocha",
+    "release": "npm publish --access public"
   },
   "repository": {
     "type": "git",
